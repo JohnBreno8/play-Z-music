@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>play Z</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+</head>
+<body>
+  <div class="music-player">
+    <div class="background"></div>
+    <div class="content">
+      <h5 id="title">Nenhuma música selecionada</h5>
+      <h6 id="artist">Artista desconhecido</h6>
+      <img id="cover" src="/mídias /img /7f799c3b7714bb22c25a7b1df7b36d93.jpg " alt="Capa da Música">
+      <audio id="audio"></audio>
+      <div class="controls">
+        <button id="prev"><img src="/mídias /img /proximo-botao (1)_1.png " alt="Anterior"></button>
+        <button id="play"><img src="/mídias /img /botao-play-ponta-de-seta.png" alt="Play"></button>
+        <button id="next"><img src="/mídias /img /proximo-botao.png" alt="Próxima"></button>
+        <button id="shuffle"><img src="/mídias /img /aleatorio.png" alt="Aleatório"></button>
+        <button id="repeat"><img src="/mídias /img /repita-uma-vez.png" alt="Repetir"></button>
+      </div>
+      <div class="progress-container">
+  <div id="progress-bar" class="progress-bar" onclick="setProgress(event)">
+    <div id="progress" class="progress"></div>
+    <div id="wave" class="wave"></div> <!-- Adicionando a camada de onda -->
+  </div>
+</div>
+     <!--<input type="file" id="file-input" multiple style="display: none;" />
+<label for="file-input">
+  <img src="/mídias /img /adicionar-musica.png" alt="Selecionar Arquivos" id="select-files-btn" />
+</label>
+    </div>
+  </div>-->
+  <div class="container">
+  <!-- Botão de Selecionar Arquivo no canto superior direito -->
+  <div class="file-selector">
+    <input type="file" id="file-input" multiple accept="audio/*" onchange="handleFileSelect(event)">
+    <label for="file-input" class="file-label">
+      <img src="/mídias /img /adicionar-musica.png" alt="Adicionar Música" class="file-icon">
+    </label>
+  </div>
+  <div class="container">
+  <!-- Botão para exibir a lista de músicas -->
+  <div class="music-list-toggle">
+    <button id="toggle-music-list">
+      <img src="/mídias /img /lista-de-reproducao.png " alt="Exibir Lista de Músicas" class="list-icon">
+    </button>
+  </div>
+
+  <!-- Lista de músicas title=""
+  <div id="music-list-container" class="music-list-container hidden">
+    <ul id="music-list"></ul>
+  </div>
+</div>
+<div class="music-panel">
+  <h2>Lista de Músicas</h2>
+  <div id="music-list-container" class="music-list"></div>
+</div>
+
+  Barra de Progresso
+  <div class="progress-container">
+    <div id="progress-bar" class="progress-bar" onclick="setProgress(event)">
+      <div id="progress" class="progress"></div>
+      <div id="wave" class="wave"></div> <!-- Camada da onda -->
+    </div>
+  </div>
+</div>
+  <script src="script.js"></script>
+</body>
+</html>
+
