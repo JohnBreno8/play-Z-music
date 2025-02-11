@@ -1,0 +1,358 @@
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #757575;
+  overflow: hidden;
+  
+}
+
+h6 {
+  font-size: 1.2em;
+  color: #000000;
+  margin-bottom: 1px;
+} 
+
+h5 {
+  font-size: 1.2em;
+  color: #000000;
+  margin-bottom: 1px;
+}
+.music-player {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px) brightness(0.3);
+  z-index: -1;
+  transition: background 0.5s ease-in-out;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+#cover {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#cover:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.controls {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.controls button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.controls button img {
+  width: 40px;
+  height: 40px;
+}
+
+.controls button:hover {
+  transform: scale(1.2);
+}
+
+.controls button.active img {
+  filter: brightness(1.5);
+}
+
+/* Barra de progresso 
+.progress-container {
+  position: relative;
+  width: 100%;
+  height: 10px;
+  background-color: #333333;
+  border-radius: 5px;
+  box-shadow: 0 4px 9px #0B0B0BC4;
+  margin: 15px 0;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Barra de progresso principal */
+.progress-bar {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #898989;
+  border-radius: 1px;
+  transition: background-color 0.3s ease;
+}
+
+/* Preenchimento da barra de progresso */
+.progress {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #25FCE1, #1EFF29);
+  border-radius: 5px;
+  
+  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 0 18px #001BFF; /* Brilho sutil */
+}
+
+/* Efeito de onda */
+.wave {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  background-image: linear-gradient(90deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.5) 100%);
+  background-size: 50% 100%;
+  animation: waveAnimation 2.5s infinite linear;
+}
+
+/* Animação da onda */
+@keyframes waveAnimation {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Efeito de hover na barra */
+.progress-container:hover .progress-bar {
+  background-color: #333333D9;
+}
+
+.progress-container:hover .progress {
+  background-color: #1e90ff;
+  box-shadow: 0 0 20px rgba(30, 255, 211, 1); /* Brilho ao passar o mouse */
+}
+
+/* Para destacar a barra ao interagir */
+.progress-container:active .progress {
+  background-color: #00FFD3;
+  box-shadow: 0 0 20px rgba(0, 255, 251, 0.7); /* Efeito ao clicar */
+}
+
+#file-input {
+  margin-top: 15px;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#file-input:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.playlist {
+  margin-top: 20px;
+  text-align: left;
+  max-height: 200px;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.playlist-item {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.playlist-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+
+
+
+
+
+
+/* Botão de selecionar arquivo no canto superior esquerdo */
+.file-selector {
+  position: absolute;
+  top: -35px; /* Distância do topo */
+  left: -8px; /* Distância da borda esquerda */
+}
+
+.file-selector input[type="file"] {
+  display: none; /* Esconde o input de arquivo real */
+}
+
+/* Estilo do botão customizado */
+.file-label {
+  cursor: pointer;
+}
+
+.file-icon {
+  width: 34px; /* Tamanho do ícone do botão */
+  height: 34px;
+  transition: transform 0.2s ease, opacity 0.3s ease; /* Efeito de interação */
+}
+
+/* Efeito de hover na imagem do botão */
+.file-label:hover .file-icon {
+  transform: scale(1.1); /* Leve aumento ao passar o mouse */
+  opacity: 0.8; /* Reduz ligeiramente a opacidade para o efeito visual */
+}
+
+
+
+
+
+
+/* Botão para exibir a lista de músicas */
+.music-list-toggle {
+  position: absolute;
+  top: -33px;
+  right: -8px;
+}
+
+.music-list-toggle button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.list-icon {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+.music-list-toggle button:hover .list-icon {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+/* Contêiner da lista de músicas */
+.music-list-container {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  width: 300px;
+  max-height: 400px;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  padding: 10px;
+  z-index: 10;
+  display: none;
+}
+
+.music-list-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.music-list-container li {
+  padding: 8px;
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.music-list-container li:last-child {
+  border-bottom: none;
+}
+
+.hidden {
+  display: none;
+}
+
+
+/* Estilo do painel de lista de músicas */
+.music-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.music-panel h2 {
+  margin: 0 0 20px;
+  text-align: center;
+  font-size: 20px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
+}
+
+/* Lista de músicas */
+.music-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.music-list-item {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.music-list-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.music-list-item.active {
+  background: rgba(255, 255, 255, 0.3);
+  font-weight: bold;
+}
+#music-list-container {
+  display: none; /* Esconde o painel inicialmente */
+}
+
+#music-list-container.visible {
+  display: block; /* Exibe o painel quando a classe "visible" estiver presente */
+}
+ 
